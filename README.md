@@ -22,7 +22,7 @@ A simple web application to generate secure passwords based on user-selected cri
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/password-gen.git
+    git clone https://github.com/SingeyDorje21/password-generator.git
     cd password-gen
     ```
 
