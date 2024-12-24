@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Password Generator</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <div class="heading">Password Generator</div>
+            <form method="POST">
+                <label>
+                    Password Length:
+                    <input type="number" name="length" min="1" autofocus required>
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="lowercase"> Include Lowercase
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="uppercase"> Include Uppercase
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="numbers"> Include Numbers
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="special"> Include Special Characters
+                </label>
+                <br>
+                <button type="submit">Generate Password</button>
+            </form>
+        </div>
+        <div id="generated-password">
+            {% if password %}
+                <p>Your generated password: <strong id="passwordOutput">{{ password }}</strong></p>
+                <button onclick="copyPassword()">Copy</button>
+            {% endif %}
+        </div>
+    </div>
+    <script>
+        function copyPassword() {
+            const passwordField = document.getElementById('passwordOutput');
+            const range = document.createRange();
+            range.selectNode(passwordField);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            alert('Password copied to clipboard');
+        }
+    </script>
+</body>
+</html>
